@@ -19,22 +19,21 @@ namespace WindowsFormsApp1
 
             var anchorNodes = doc.DocumentNode.SelectNodes("//a[@class]");
             if (anchorNodes == null) return "";
-
+            int dem = 0;
             var classGroups = new Dictionary<string, List<HtmlNode>>();
-
             foreach (var a in anchorNodes)
             {
-                if (IsInExcludedSection(a)) continue;
-
+               
+                if (IsInExcludedSection(a)) 
+                    continue;
                 var classAttr = a.GetAttributeValue("class", "").Trim();
                 if (string.IsNullOrWhiteSpace(classAttr)) continue;
-
                 var href = a.GetAttributeValue("href", "");
                 if (string.IsNullOrWhiteSpace(href) || href == "#") continue;
 
                 var innerText = a.InnerText.Trim();
-                if (innerText.Length < 15) continue; // bỏ nếu nội dung quá ngắn
-
+                //if (innerText.Length < 2) continue; // bỏ nếu nội dung quá ngắn
+               
                 var classList = classAttr.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var cls in classList)
                 {
@@ -42,6 +41,7 @@ namespace WindowsFormsApp1
                         classGroups[cls] = new List<HtmlNode>();
 
                     classGroups[cls].Add(a);
+                    dem++;
                 }
             }
 
@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
             while (current != null)
             {
                 var tag = current.Name.ToLower();
-                if (tag == "header" || tag == "footer" || tag == "nav" || tag == "ul" || tag == "li")
+                if (tag == "header" || tag == "footer" || tag == "nav")
                     return true;
 
                 var classAttr = current.GetAttributeValue("class", "").ToLower();

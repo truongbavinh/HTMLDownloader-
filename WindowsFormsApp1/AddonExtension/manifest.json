@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "apkpure Auto Saver",
+    "version": "1.0",
+    "permissions": ["scripting", "tabs"],
+    "host_permissions": ["<all_urls>"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_title": "apkpure Saver"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://*.apkpure.com/*"],
+        "js": ["content.js"],
+        "run_at": "document_idle"
+      }
+    ]
+  }
+  

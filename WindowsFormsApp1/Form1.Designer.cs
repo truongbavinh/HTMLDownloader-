@@ -85,8 +85,6 @@
             this.txtinputlink.Name = "txtinputlink";
             this.txtinputlink.Size = new System.Drawing.Size(995, 23);
             this.txtinputlink.TabIndex = 0;
-            this.txtinputlink.Text = "https://www.flightaware.com/live/findflight?origin=KJFK&destination=LGAV";
-            this.txtinputlink.TextChanged += new System.EventHandler(this.txtinputlink_TextChanged);
             this.txtinputlink.Leave += new System.EventHandler(this.txtinputlink_Leave);
             // 
             // BTProcessing
@@ -245,7 +243,7 @@
             this.txtnumscroll.Name = "txtnumscroll";
             this.txtnumscroll.Size = new System.Drawing.Size(48, 23);
             this.txtnumscroll.TabIndex = 55;
-            this.txtnumscroll.Text = "2";
+            this.txtnumscroll.Text = "5";
             // 
             // lbnumsave
             // 
@@ -373,7 +371,7 @@
             // 
             // BTPreventbot
             // 
-            this.BTPreventbot.Location = new System.Drawing.Point(31, 40);
+            this.BTPreventbot.Location = new System.Drawing.Point(27, 26);
             this.BTPreventbot.Margin = new System.Windows.Forms.Padding(2);
             this.BTPreventbot.Name = "BTPreventbot";
             this.BTPreventbot.Size = new System.Drawing.Size(169, 34);
@@ -387,7 +385,7 @@
             this.groupBox2.Controls.Add(this.BTPreventbot);
             this.groupBox2.Location = new System.Drawing.Point(623, 67);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(227, 88);
+            this.groupBox2.Size = new System.Drawing.Size(227, 74);
             this.groupBox2.TabIndex = 64;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Prevent bot";

@@ -72,6 +72,7 @@ namespace WindowsFormsApp1
                 string html = System.Text.Json.JsonSerializer.Deserialize<string>(htmlJson);
                 AnchorClassAnalyzer analyzer = new AnchorClassAnalyzer();
                 mostCommonClass = analyzer.GetMostLikelyItemAnchorClass(html);
+                txtcssclass.Text = mostCommonClass;
             }
             else
             {
@@ -88,6 +89,7 @@ namespace WindowsFormsApp1
         {
             string script = "";
             string csslink = txtcssclass.Text.Trim();
+            csslink = csslink.Replace(' ','.');
             if (!string.IsNullOrEmpty(csslink))
             {
                 script = @"
@@ -170,7 +172,7 @@ namespace WindowsFormsApp1
             if (links != null && links.Count > 0)
             {
                 var uniqueLinks = links;
-                int maxLinks = 200;
+                int maxLinks = 500;
                 uniqueLinks = uniqueLinks.Take(maxLinks).ToList();
                 foreach (var link in uniqueLinks)
                 {
@@ -276,26 +278,33 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Please Input CSS Button Next Paging");
                 return;
             }
-            string clpaging = txtnextpaging.Text.Replace(' ', '.').Trim();
+            string clpaging = txtnextpaging.Text.Trim().Replace(' ', '.');
             for (int i = 0; i < num; i++)
             {
                 string script = @"
-                (function() {
-                    const buttons = document.querySelectorAll('."+clpaging+ @"');
-                    for (const btn of buttons) {
-                        if (btn.innerText.trim().toLowerCase() === 'next') {
-                            btn.click();
-                            return true;
+                    (() => {
+                        const buttons = document.querySelectorAll('."+clpaging+@"');
+                        if (buttons.length === 0) return false;
+                        const isDisabled = (el) =>
+                            el.disabled || el.getAttribute('aria-disabled') === 'true' || el.classList.contains('disabled');
+                        if (buttons.length === 1) {
+                            const btn = buttons[0];
+                            if (!isDisabled(btn)) {
+                                btn.click();
+                                return true;
+                            }
+                            return false;
                         }
-                        else
-                        {
-                              btn.click();
-                              return true;
+                        for (const btn of buttons) {
+                            const label = (btn.getAttribute('aria-label') || '').toLowerCase();
+                            if (label.includes('next') && !isDisabled(btn)) {
+                                btn.click();
+                                return true;
+                            }
                         }
-                    }
-                    return false;
-                })();
-                ";
+                        return false;
+                    })();
+                    ";
                 await webView21.ExecuteScriptAsync(script);
 
                 await ScrollToBottomAsync(20, 1000);
@@ -392,7 +401,7 @@ namespace WindowsFormsApp1
 
             _skippedLinks.Clear();
             dem = 0;
-            
+            vt = 0;
             for (int i = vt; i < lblinks.Items.Count; i++)
             {
                 string link = lblinks.Items[i].ToString();
@@ -415,14 +424,14 @@ namespace WindowsFormsApp1
                 try
                 {
                     webView21.CoreWebView2.Navigate(link);
-
+                    await Task.Delay(delay);
                     // Wait up to 15 seconds for the page to load.
                     bool navigationCompleted = await Task.WhenAny(tcs.Task, Task.Delay(15000)) == tcs.Task && await tcs.Task;
-                    if (!navigationCompleted)
-                    {
-                        _skippedLinks.Add($"{link}: Skipped due to page load error or timeout.");
-                        continue;
-                    }
+                    //if (!navigationCompleted)
+                    //{
+                    //    _skippedLinks.Add($"{link}: Skipped due to page load error or timeout.");
+                    //    continue;
+                    //}
 
                     await ScrollToBottomAsync(5, 500);
 
@@ -471,7 +480,7 @@ namespace WindowsFormsApp1
 
                     dem++;
                     lbnumsave.Text = dem.ToString();
-                    await Task.Delay(delay);
+                   
                 }
                 catch (Exception ex)
                 {
@@ -503,7 +512,8 @@ namespace WindowsFormsApp1
                             'not found',
                             'this page doesn’t exist',
                             'this page does not exist',
-                            'oops! something went wrong'
+                            'oops! something went wrong',
+                            'can't reach this page'
                         ];
                         return errorIndicators.some(indicator => bodyText.includes(indicator));
                     })();
@@ -698,11 +708,6 @@ namespace WindowsFormsApp1
             _httpClient?.Dispose();
         }
 
-        private void txtinputlink_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private async void txtinputlink_Leave(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtinputlink.Text))
@@ -717,6 +722,7 @@ namespace WindowsFormsApp1
                     string mostCommonClass = "";
                     if (string.IsNullOrEmpty(txtcssclass.Text))
                     {
+                        await ScrollToBottomAsync(5, 500);
                         string htmlJson = await webView21.CoreWebView2.ExecuteScriptAsync("document.documentElement.outerHTML;");
                         string html = System.Text.Json.JsonSerializer.Deserialize<string>(htmlJson);
                         AnchorClassAnalyzer analyzer = new AnchorClassAnalyzer();
