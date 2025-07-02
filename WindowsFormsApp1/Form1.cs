@@ -407,8 +407,8 @@ namespace WindowsFormsApp1
                 saveFolder = txtpathsavefile.Text;
 
             _skippedLinks.Clear();
-            dem = 170;
-            vt = 170;
+            dem = 0;
+            vt = 0;
             for (int i = vt; i < lblinks.Items.Count; i++)
             {
                 string link = lblinks.Items[i].ToString();
