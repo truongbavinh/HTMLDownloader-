@@ -38,11 +38,11 @@ namespace WindowsFormsApp1
         private int dem;
         private async void BTGetLinks_Click(object sender, EventArgs e)
         {
-            lblinks.Items.Clear();
-            if(!string.IsNullOrEmpty(txtdelay.Text))
-                delay=int.Parse(txtdelay.Text);
+            //lblinks.Items.Clear();
+            if (!string.IsNullOrEmpty(txtdelay.Text))
+                delay = int.Parse(txtdelay.Text);
             else
-                delay=2;
+                delay = 2;
             delay = delay * 1000;
             // Thiết lập URL cần tải
             string url = txtinputlink.Text.Trim();
@@ -78,6 +78,7 @@ namespace WindowsFormsApp1
             {
                 mostCommonClass = txtcssclass.Text;
             }
+            mostCommonClass = mostCommonClass.Replace(' ', '.');
             if (rdShowmore.Checked)
                 Procsessshowmore(num, mostCommonClass);
             else if (rdpaging.Checked)
@@ -172,7 +173,7 @@ namespace WindowsFormsApp1
             if (links != null && links.Count > 0)
             {
                 var uniqueLinks = links;
-                int maxLinks = 500;
+                int maxLinks = 3000;
                 uniqueLinks = uniqueLinks.Take(maxLinks).ToList();
                 foreach (var link in uniqueLinks)
                 {
@@ -194,7 +195,7 @@ namespace WindowsFormsApp1
             {
                 script = @"
     (function() {
-        const btn = document.querySelector('div."+clshowmore+@"');
+        const btn = document.querySelector('div." + clshowmore+ ",button." + clshowmore+", a." + clshowmore+@"');
         if (btn) {
             btn.click();
             return 'Clicked';
@@ -262,7 +263,7 @@ namespace WindowsFormsApp1
             if (links != null && links.Count > 0)
             {
                 var uniqueLinks = links;
-                int maxLinks = 200;
+                int maxLinks = 2100;
                 uniqueLinks = uniqueLinks.Take(maxLinks).ToList();
                 foreach (var link in uniqueLinks)
                 {
@@ -278,7 +279,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Please Input CSS Button Next Paging");
                 return;
             }
-            string clpaging = txtnextpaging.Text.Trim().Replace(' ', '.');
+            string clpaging = txtnextpaging.Text.Trim().Replace(' ','.');
             for (int i = 0; i < num; i++)
             {
                 string script = @"
@@ -308,11 +309,12 @@ namespace WindowsFormsApp1
                 await webView21.ExecuteScriptAsync(script);
 
                 await ScrollToBottomAsync(20, 1000);
-                await Task.Delay(10000);
+                await Task.Delay(5000);
 
 
                 script = "";
                 string csslink = txtcssclass.Text.Trim();
+                csslink = csslink.Replace(' ', '.');
                 if (!string.IsNullOrEmpty(csslink))
                 {
                     script = @"
@@ -375,7 +377,7 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        private async Task ScrollToBottomAsync(int scrollTimes = 50, int delayMs = 300)
+        private async Task ScrollToBottomAsync(int scrollTimes = 20, int delayMs = 300)
         {
             await Task.Delay(1000);
             for (int i = 0; i < scrollTimes; i++)
@@ -389,6 +391,11 @@ namespace WindowsFormsApp1
         
         private async void BTProcessing_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(txtdelay.Text))
+                delay = int.Parse(txtdelay.Text);
+            else
+                delay = 2;
+            delay = delay * 1000;
             if (webView21 == null || webView21.CoreWebView2 == null)
             {
                 await webView21.EnsureCoreWebView2Async();
@@ -400,8 +407,8 @@ namespace WindowsFormsApp1
                 saveFolder = txtpathsavefile.Text;
 
             _skippedLinks.Clear();
-            dem = 0;
-            vt = 0;
+            dem = 170;
+            vt = 170;
             for (int i = vt; i < lblinks.Items.Count; i++)
             {
                 string link = lblinks.Items[i].ToString();
@@ -452,7 +459,7 @@ namespace WindowsFormsApp1
                         await Task.Delay(1000);
                         continue;
                     }
-
+                    
                     // Step 4: Save page
                     string safeFileName = dem.ToString("D4") + ".mhtml";
                     string savePath = Path.Combine(saveFolder, safeFileName);
@@ -565,6 +572,7 @@ namespace WindowsFormsApp1
             string foldername=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
             txtpathsavefile.Text = foldername;
             vt = 0;
+           
         }
 
         private void BTBrowser_Click(object sender, EventArgs e)
@@ -755,7 +763,7 @@ namespace WindowsFormsApp1
                 int dem = 0;
                 foreach (var link in linksToOpen)
                 {
-                    if (dem >= 0)
+                    if (dem >= 0)//888
                     {
                         try
                         {
@@ -764,7 +772,7 @@ namespace WindowsFormsApp1
                                 FileName = link,
                                 UseShellExecute = true
                             });
-                            await Task.Delay(delay);
+                            await Task.Delay(delay*1000);
                         }
                         catch (Exception ex)
                         {
