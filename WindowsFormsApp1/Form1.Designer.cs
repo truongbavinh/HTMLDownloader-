@@ -63,6 +63,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtdelay = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.cblink = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -180,7 +181,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(741, 42);
+            this.label6.Location = new System.Drawing.Point(729, 42);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(123, 17);
@@ -189,11 +190,11 @@
             // 
             // txtpathsavefile
             // 
-            this.txtpathsavefile.Location = new System.Drawing.Point(839, 40);
+            this.txtpathsavefile.Location = new System.Drawing.Point(856, 40);
             this.txtpathsavefile.Margin = new System.Windows.Forms.Padding(2);
             this.txtpathsavefile.Name = "txtpathsavefile";
             this.txtpathsavefile.ReadOnly = true;
-            this.txtpathsavefile.Size = new System.Drawing.Size(346, 23);
+            this.txtpathsavefile.Size = new System.Drawing.Size(329, 23);
             this.txtpathsavefile.TabIndex = 3;
             // 
             // BTBrowser
@@ -416,11 +417,24 @@
             this.label12.TabIndex = 64;
             this.label12.Text = "Delay";
             // 
+            // cblink
+            // 
+            this.cblink.AutoSize = true;
+            this.cblink.Checked = true;
+            this.cblink.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cblink.Location = new System.Drawing.Point(699, 43);
+            this.cblink.Name = "cblink";
+            this.cblink.Size = new System.Drawing.Size(18, 17);
+            this.cblink.TabIndex = 67;
+            this.cblink.UseVisualStyleBackColor = true;
+            this.cblink.CheckedChanged += new System.EventHandler(this.cblink_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1414, 802);
+            this.Controls.Add(this.cblink);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtdelay);
@@ -449,7 +463,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
-            this.Text = "Auto Crawl HTML";
+            this.Text = "HTMLDownloader";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -498,6 +512,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtdelay;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox cblink;
     }
 }
 

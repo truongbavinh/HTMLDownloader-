@@ -23,6 +23,7 @@ namespace WindowsFormsApp1
         private readonly HttpClient _httpClient; // Add HttpClient for HTTP requests
         private List<string> _skippedLinks; // To log skipped links
         private const int MinContentLength = 100;
+        private List<string> _Links;
         public Form1()
         {
             InitializeComponent();
@@ -44,16 +45,14 @@ namespace WindowsFormsApp1
             else
                 delay = 2;
             delay = delay * 1000;
-            // Thiết lập URL cần tải
+            // set URL download
             string url = txtinputlink.Text.Trim();
             if (string.IsNullOrEmpty(url))
             {
                 MessageBox.Show("Please input link");
                 return;
             }
-            //webView21.Source = new Uri(url);
-            //webView21.CoreWebView2.Settings.IsScriptEnabled = true;
-            //await Task.Delay(5000);
+
             int numscroll =1;
             if (!string.IsNullOrEmpty(txtnumscroll.Text))
             {
@@ -66,7 +65,7 @@ namespace WindowsFormsApp1
             if(!string.IsNullOrEmpty(txtnumclick.Text))
                 num=int.Parse(txtnumclick.Text);
             string mostCommonClass = "";
-            if (string.IsNullOrEmpty(txtcssclass.Text))
+            if (string.IsNullOrEmpty(txtcssclass.Text) && cblink.Checked)
             {
                 string htmlJson = await webView21.CoreWebView2.ExecuteScriptAsync("document.documentElement.outerHTML;");
                 string html = System.Text.Json.JsonSerializer.Deserialize<string>(htmlJson);
@@ -76,7 +75,10 @@ namespace WindowsFormsApp1
             }
             else
             {
-                mostCommonClass = txtcssclass.Text;
+                if (cblink.Checked)
+                    mostCommonClass = txtcssclass.Text;
+                else
+                    txtcssclass.Text = "";
             }
             mostCommonClass = mostCommonClass.Replace(' ', '.');
             if (rdShowmore.Checked)
@@ -85,6 +87,7 @@ namespace WindowsFormsApp1
                 Procsessspaging(num, mostCommonClass);
             else
                 Procsesss(mostCommonClass);
+           
         }
         private async void Procsesss(string mostCommonClass)
         {
@@ -178,8 +181,9 @@ namespace WindowsFormsApp1
                 foreach (var link in uniqueLinks)
                 {
                     lblinks.Items.Add(link);
+                    _Links.Add(link);
                 }
-                lbnumber.Text = uniqueLinks.Count.ToString();
+                lbnumber.Text = _Links.Count.ToString();
             }
         }
         private async void Procsessshowmore(int num, string mostCommonClass)
@@ -268,8 +272,9 @@ namespace WindowsFormsApp1
                 foreach (var link in uniqueLinks)
                 {
                     lblinks.Items.Add(link);
+                    _Links.Add(link);
                 }
-                lbnumber.Text = uniqueLinks.Count.ToString();
+                lbnumber.Text = _Links.Count.ToString();
             }
         }
         private async void Procsessspaging(int num, string mostCommonClass)
@@ -372,8 +377,9 @@ namespace WindowsFormsApp1
                     foreach (var link in uniqueLinks)
                     {
                         lblinks.Items.Add(link);
+                        _Links.Add(link);
                     }
-                    lbnumber.Text = lblinks.Items.Count.ToString();
+                    lbnumber.Text = _Links.Count.ToString();
                 }
             }
         }
@@ -434,13 +440,11 @@ namespace WindowsFormsApp1
                     await Task.Delay(delay);
                     // Wait up to 15 seconds for the page to load.
                     bool navigationCompleted = await Task.WhenAny(tcs.Task, Task.Delay(15000)) == tcs.Task && await tcs.Task;
-                    //if (!navigationCompleted)
-                    //{
-                    //    _skippedLinks.Add($"{link}: Skipped due to page load error or timeout.");
-                    //    continue;
-                    //}
-
-                    await ScrollToBottomAsync(5, 500);
+                    if (!navigationCompleted)
+                    {
+                        _skippedLinks.Add($"{link}: Skipped due to page load error or timeout.");
+                        continue;
+                    }
 
                     // Step 2: Check for error content
                     bool hasErrorContent = await CheckForErrorContentAsync();
@@ -482,9 +486,9 @@ namespace WindowsFormsApp1
                         _skippedLinks.Add($"{link}: Skipped due to empty MHTML content.");
                         continue;
                     }
-
+                    await Task.Delay(3000);
                     File.WriteAllText(savePath, mhtmlContent);
-
+                    
                     dem++;
                     lbnumsave.Text = dem.ToString();
                    
@@ -520,7 +524,8 @@ namespace WindowsFormsApp1
                             'this page doesn’t exist',
                             'this page does not exist',
                             'oops! something went wrong',
-                            'can't reach this page'
+                            'can't reach this page',
+                            'PAGE NOT FOUND'
                         ];
                         return errorIndicators.some(indicator => bodyText.includes(indicator));
                     })();
@@ -570,9 +575,9 @@ namespace WindowsFormsApp1
 
             saveFolder = "";
             string foldername=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
-            txtpathsavefile.Text = foldername;
+            //txtpathsavefile.Text = @"F:\Article\Dataset\Tourist\test";
             vt = 0;
-           
+            _Links = new List<string>();
         }
 
         private void BTBrowser_Click(object sender, EventArgs e)
@@ -763,7 +768,7 @@ namespace WindowsFormsApp1
                 int dem = 0;
                 foreach (var link in linksToOpen)
                 {
-                    if (dem >= 0)//888
+                    if (dem >= 0)
                     {
                         try
                         {
@@ -792,6 +797,14 @@ namespace WindowsFormsApp1
         private void lblinks_SelectedIndexChanged(object sender, EventArgs e)
         {
             vt= lblinks.SelectedIndex;
+        }
+
+        private void cblink_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cblink.Checked)
+               txtcssclass.Enabled = true;
+            else
+                txtcssclass.Enabled=false;
         }
     }
     

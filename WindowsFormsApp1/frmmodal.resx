@@ -117,7 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="txtinputlink.Text" xml:space="preserve">
-    <value>https://www.expedia.com/Flights-Search?flight-type=on&amp;mode=search&amp;trip=roundtrip&amp;leg1=from%3ATokyo%2C%20Japan%20%28TYO-All%20Airports%29%2Cto%3ASingapore%2C%20Singapore%20%28SIN-Changi%29%2Cdeparture%3A6%2F28%2F2025TANYT%2CfromType%3AMETROCODE%2CtoType%3AAIRPORT&amp;leg2=from%3ASingapore%2C%20Singapore%20%28SIN-Changi%29%2Cto%3ATokyo%2C%20Japan%20%28TYO-All%20Airports%29%2Cdeparture%3A6%2F29%2F2025TANYT%2CfromType%3AAIRPORT%2CtoType%3AMETROCODE&amp;options=cabinclass%3Aeconomy&amp;fromDate=6%2F28%2F2025&amp;toDate=6%2F29%2F2025&amp;d1=2025-6-28&amp;d2=2025-6-29&amp;passengers=adults%3A1%2Cinfantinlap%3AN&amp;pwaDialog=FLIGHTS_DETAILS_AND_FARES-index-2-leg-0-fsr</value>
-  </data>
 </root>

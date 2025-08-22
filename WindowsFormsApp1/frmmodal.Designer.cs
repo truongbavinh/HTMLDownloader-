@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmmodal));
             this.rdShowmore = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdpaging = new System.Windows.Forms.RadioButton();
@@ -273,7 +272,6 @@
             this.txtinputlink.Name = "txtinputlink";
             this.txtinputlink.Size = new System.Drawing.Size(995, 23);
             this.txtinputlink.TabIndex = 65;
-            this.txtinputlink.Text = resources.GetString("txtinputlink.Text");
             this.txtinputlink.TextChanged += new System.EventHandler(this.txtinputlink_TextChanged);
             this.txtinputlink.Leave += new System.EventHandler(this.txtinputlink_Leave);
             // 
