@@ -3,10 +3,30 @@
 **HTMLDownloader** is an open-source web scraping and archiving tool built with C# and .NET Framework, using Windows Forms and WebView2 to handle dynamic content and save pages as MHTML.
 
 ## Installation
+
+### End-user (recommended)
+<p align="center">
+  <img src="docs/img/install.gif" alt="Install with MSI" width="800"><br>
+  <em>Install with MSI</em>
+</p>
+
+<p align="center">
+  <img src="docs/img/portable.gif" alt="Run portable ZIP" width="800"><br>
+  <em>Run portable ZIP</em>
+</p>
+
+Download from the **Releases** page:
+- `HTMLDownloader-<version>.msi` — installer (recommended)
+- `HTMLDownloader-<version>-win32|win64.zip` — portable (no installation)
+
+> Requirements: .NET Framework 4.8 and Microsoft Edge WebView2 Runtime (see `docs/RUNTIME.md`).
+
+### Developer (build from source)
 1. Clone this repository: `git clone https://github.com/truongbavinh/HTMLDownloader.git`
 2. Open in Visual Studio 2019/2022.
 3. Restore NuGet packages (including WebView2).
 4. Build and run the project.
+
 
 ## Usage
 - Enter URLs in the input field.
