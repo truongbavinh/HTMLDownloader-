@@ -1,0 +1,3 @@
+# Category seed URLs for discovery (Farfetch)
+# Read LEGAL notes: see docs/LEGAL.md before using.
+https://www.farfetch.com/vn/shopping/women/clothing-1/items.aspx
