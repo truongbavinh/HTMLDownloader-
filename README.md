@@ -26,7 +26,12 @@ Download from the **Releases** page:
 2. Open in Visual Studio 2019/2022.
 3. Restore NuGet packages (including WebView2).
 4. Build and run the project.
-
+## Download samples
+Four sample files are bundled so you can run both flows immediately:
+- `samples/urls.category.farfetch.txt`  
+- `samples/urls.products.farfetch.txt`  
+- `samples/urls.category.rightmove.txt`  
+- `samples/urls.products.rightmove.txt`  
 ## Documentation
 - Quick Start (End-User): [docs/USER_GUIDE.md](docs/USER_GUIDE.md)
 - Runtime Requirements: [docs/RUNTIME.md](docs/RUNTIME.md)
