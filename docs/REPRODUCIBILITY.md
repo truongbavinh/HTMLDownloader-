@@ -30,7 +30,7 @@ This guide reproduces the demo using **two URL types** your app supports:
   ```
 
 - **Direct (products)** — `samples/urls.products.farfetch.txt`  
-  Contains **10–20 product detail URLs** (one per line). Replace placeholders with real product URLs for your demo.
+  Contains **50 product detail URLs** (one per line). Replace placeholders with real product URLs for your demo.
 
 ---
 
