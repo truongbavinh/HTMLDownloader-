@@ -22,7 +22,7 @@ Download from the **Releases** page:
 > Requirements: .NET Framework 4.8 and Microsoft Edge WebView2 Runtime (see `docs/RUNTIME.md`).
 
 ### Developer (build from source)
-1. Clone this repository: `git clone https://github.com/truongbavinh/HTMLDownloader.git`
+1. Clone this repository: `git clone https://github.com/truongbavinh/HTMLDownloader-.git`
 2. Open in Visual Studio 2019/2022.
 3. Restore NuGet packages (including WebView2).
 4. Build and run the project.
