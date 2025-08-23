@@ -1,3 +1,4 @@
+
 # Security & Trust
 
 This document explains how we distribute binaries, how you can verify their authenticity, and what to do if Windows warns about running the app.
@@ -9,11 +10,13 @@ This document explains how we distribute binaries, how you can verify their auth
 ## Official Distribution
 
 We publish binaries **only** on the repository’s **GitHub Releases** page. Each release includes:
-- `HTMLDownloader-<version>.msi` — MSI installer
-- `HTMLDownloader-<version>-win32|win64.zip` — portable build
+- `HTMLDownloader-v1.0.msi` — MSI installer
+- `HTMLDownloader-v1.0-win32.zip` and/or `HTMLDownloader-v1.0-win64.zip` — portable builds
 - `checksums.txt` — SHA256 checksums for the above files
 
 If you obtained the files elsewhere, consider them **untrusted**.
+
+> **Note:** If your filename scheme omits the `v` (e.g., `HTMLDownloader-1.0.msi`), adjust the commands below accordingly.
 
 ---
 
@@ -22,24 +25,25 @@ If you obtained the files elsewhere, consider them **untrusted**.
 Open **Windows PowerShell** in the folder containing the downloaded files and run:
 
 ```powershell
-# Compute SHA256 for both MSI and ZIP
-Get-FileHash .\HTMLDownloader-<version>.msi -Algorithm SHA256
-Get-FileHash .\HTMLDownloader-<version>-win32.zip -Algorithm SHA256   # or -win64.zip
+# Compute SHA256 for MSI and the portable ZIP you downloaded
+Get-FileHash .\HTMLDownloader-v1.0.msi -Algorithm SHA256
+# Pick one (or both) matching your architecture:
+Get-FileHash .\HTMLDownloader-v1.0-win32.zip -Algorithm SHA256
+Get-FileHash .\HTMLDownloader-v1.0-win64.zip -Algorithm SHA256
 
 # Compare with the values listed in checksums.txt (shipped in the Release)
 Get-Content .\checksums.txt
 ```
 
-Optional helper (auto-compare both files against `checksums.txt`):
+Or **auto-detect** the files in the current folder (no need to hardcode version/arch):
 
 ```powershell
-# Save as verify.ps1 in the same folder as the downloads
 $ref = Get-Content .\checksums.txt
-$files = @("HTMLDownloader-<version>.msi", "HTMLDownloader-<version>-win32.zip", "HTMLDownloader-<version>-win64.zip") | Where-Object { Test-Path $_ }
-foreach ($f in $files) {
-  $h = (Get-FileHash $f -Algorithm SHA256).Hash.ToUpper()
-  if ($ref -match $h) { Write-Host "[OK] $f matches SHA256" -ForegroundColor Green }
-  else { Write-Host "[MISMATCH] $f does NOT match SHA256" -ForegroundColor Red }
+$files = Get-ChildItem -File -Include 'HTMLDownloader-*.msi','HTMLDownloader-*-win*.zip'
+foreach ($f in $files) { 
+  $h = (Get-FileHash $f.FullName -Algorithm SHA256).Hash.ToUpper()
+  if ($ref -match $h) { Write-Host "[OK] $($f.Name) matches SHA256" -ForegroundColor Green }
+  else { Write-Host "[MISMATCH] $($f.Name) does NOT match SHA256" -ForegroundColor Red }
 }
 ```
 
@@ -61,12 +65,12 @@ foreach ($f in $files) {
 ## Code Signing Policy
 
 - If available, we will **code-sign** the MSI and main binaries using Authenticode from a trusted CA.
-- If a specific release is **not** signed, we provide **SHA256 checksums** and host binaries **only** on GitHub Releases to ensure integrity and traceability.
+- If this release is **not** signed, we provide **SHA256 checksums** and host binaries **only** on GitHub Releases to ensure integrity and traceability.
 
 To check a digital signature when present:
 
 ```powershell
-Get-AuthenticodeSignature .\HTMLDownloader-<version>.msi | Format-List *
+Get-AuthenticodeSignature .\HTMLDownloader-v1.0.msi | Format-List *
 ```
 
 ---
@@ -93,4 +97,5 @@ We appreciate responsible disclosure. Please avoid filing public issues for sens
 ## Supply-Chain Notes
 
 - Build artifacts are produced from this repository’s source.  
-- Release assets (MSI/ZIP) are attached exclusively to the GitHub Release associated with the corresponding tag (e.g., `v1.0.0`).
+- Release assets (MSI/ZIP) are attached exclusively to the GitHub Release associated with the corresponding tag (e.g., `v1.0`).
+
