@@ -6,12 +6,12 @@
 
 ### End-user (recommended)
 <p align="center">
-  <img src="docs/img/install.gif" alt="Install with MSI" width="800"><br>
+  <img src="img/install.gif" alt="Install with MSI" width="800"><br>
   <em>Install with MSI</em>
 </p>
 
 <p align="center">
-  <img src="docs/img/portable.gif" alt="Run portable ZIP" width="800"><br>
+  <img src="img/portable.gif" alt="Run portable ZIP" width="800"><br>
   <em>Run portable ZIP</em>
 </p>
 
