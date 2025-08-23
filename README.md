@@ -16,8 +16,8 @@
 </p>
 
 Download from the **Releases** page:
-- `HTMLDownloader-<version>.msi` — installer (recommended)
-- `HTMLDownloader-<version>-win32|win64.zip` — portable (no installation)
+- `HTMLDownloader-v1.0.msi` — installer (recommended)
+- `HTMLDownloader-v1.0-win32|win64.zip` — portable (no installation)
 
 > Requirements: .NET Framework 4.8 and Microsoft Edge WebView2 Runtime (see `docs/RUNTIME.md`).
 
@@ -27,6 +27,12 @@ Download from the **Releases** page:
 3. Restore NuGet packages (including WebView2).
 4. Build and run the project.
 
+## Documentation
+- Quick Start (End-User): [docs/USER_GUIDE.md](docs/USER_GUIDE.md)
+- Runtime Requirements: [docs/RUNTIME.md](docs/RUNTIME.md)
+- Security & Trust: [docs/SECURITY.md](docs/SECURITY.md)
+- **Target Framework Rationale**: [docs/FRAMEWORK.md](docs/FRAMEWORK.md)
+- Reproducibility: [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 
 ## Usage
 - Enter URLs in the input field.
@@ -38,6 +44,7 @@ MIT License (see LICENSE.txt).
 
 ## Contributions
 Fork this repository, submit pull requests, or report issues to improve the tool.
+
 ## Metadata Table
 
 | Field                     | Description                                                                                          |
@@ -56,5 +63,5 @@ Fork this repository, submit pull requests, or report issues to improve the tool
 | How to Run                | Open the `.sln` solution in Visual Studio and build. Then run the application.                       |
 | Input                     | List of URLs (e.g., from a textbox or file import inside the app)                                    |
 | Output                    | HTML content archived locally on disk                                                                |
-| Documentation             | Included in `README.md`                                                                             |
+| Documentation             | Included in `README.md`                                                                              |
 | Reproducibility           | Fully reproducible with provided C# source code and clear setup instructions                         |
