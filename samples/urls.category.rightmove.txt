@@ -1,0 +1,3 @@
+# Category seed URLs for discovery (rightmove.co.uk)
+https://www.rightmove.co.uk/property-for-sale/London.html
+
