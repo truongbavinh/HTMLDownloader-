@@ -20,3 +20,11 @@ See `docs/RUNTIME.md` for links and steps.
 ## Troubleshooting
 - SmartScreen: *More info → Run anyway* (after verifying SHA256).
 - If `WebView2Loader.dll` error appears, ensure this DLL sits next to `HTMLDownloader.exe` (already included).
+## Install (MSI)
+![Install demo](img/install.gif)
+
+## Portable (ZIP)
+![Portable demo](img/portable.gif)
+
+## First Run
+![First run](img/play.gif)
