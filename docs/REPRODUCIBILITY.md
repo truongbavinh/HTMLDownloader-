@@ -45,8 +45,7 @@ This guide shows how to reproduce the demo with **two inputs**:
    - Portable: extract `HtmlDownloader-v1.0-win32.zip` to a user‑writable folder.
 2. **Launch** `HtmlDownloader.exe` (adjust the name if your build differs).
 3. **Load seed**  
-   - *Option A:* **File → Open Project…** → `samples/demo.discovery.farfetch.project` (if provided); **or**  
-   - *Option B:* In the UI, set the seed to the first line of `samples/urls.category.farfetch.txt`.
+   - In the UI, paste the seed to input text line of `samples/urls.category.farfetch.txt`.
 4. **Load discovery settings**  
    - Click **Load selectors** (if your UI supports it) → pick `samples/selectors.farfetch.json`; otherwise ensure your built‑in rules match `a[href*='-item-']` with **MaxDepth=1** and **same‑domain**.
 5. **Discover**  
