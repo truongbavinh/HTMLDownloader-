@@ -1,0 +1,35 @@
+[
+  { "domain": "farfetch",      "page_url": "https://www.farfetch.com/vn/shopping/women/clothing-1/items.aspx",
+    "selector": "a[href*='-item-'][href$='.aspx']", "scrolls": 8, "delay_sec": 1.5 },
+
+  { "domain": "rightmove",     "page_url": "https://www.rightmove.co.uk/property-for-sale/London.html",
+    "selector": "a.propertyCard-link, a[href*='/properties/']", "scrolls": 8, "delay_sec": 1.5 },
+
+  { "domain": "apkpure",       "page_url": "https://apkpure.com/app",
+    "selector": "a[href*='/com.']", "scrolls": 10, "delay_sec": 1.2 },
+
+  { "domain": "songkick",      "page_url": "https://www.songkick.com/metro-areas/24426-uk-london",
+    "selector": "a[href*='/concerts/']", "scrolls": 8, "delay_sec": 1.5 },
+
+  { "domain": "tourradar",     "page_url": "https://www.tourradar.com/srp/d-europe",
+    "selector": "a[href*='/t/']", "scrolls": 8, "delay_sec": 1.5 },
+
+  { "domain": "ebay",          "page_url": "https://www.ebay.com/b/Laptops-Netbooks/175672/bn_1648276",
+    "selector": "a[href*='/itm/']", "scrolls": 10, "delay_sec": 1.2 },
+
+  { "domain": "etsy",          "page_url": "https://www.etsy.com/c/jewelry-and-accessories?ref=pagination",
+    "selector": "a[href*='/listing/']", "scrolls": 10, "delay_sec": 1.2 },
+
+  { "domain": "newegg",        "page_url": "https://www.newegg.com/p/pl?d=graphics+card",
+    "selector": "a[href*='/p/']", "scrolls": 10, "delay_sec": 1.2 },
+
+  { "domain": "autotrader",    "page_url": "https://www.autotrader.co.uk/cars/uk",
+    "selector": "a[href*='/car-details/']", "scrolls": 10, "delay_sec": 1.2 },
+    {
+  "domain": "books",
+  "page_url": "https://books.toscrape.com/catalogue/page-1.html",
+  "selector": "article.product_pod h3 a",
+  "scrolls": 1,
+  "delay_sec": 0.5
+}
+]
