@@ -1,4 +1,5 @@
 # HTMLDownloader
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16935169.svg)](https://doi.org/10.5281/zenodo.16935169)
 
 **HTMLDownloader** is an open-source web scraping and archiving tool built with C# and .NET Framework, using Windows Forms and WebView2 to handle dynamic content and save pages as MHTML.
 
