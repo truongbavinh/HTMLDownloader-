@@ -39,7 +39,8 @@ Four sample files are bundled so you can run both flows immediately:
 - Security & Trust: [docs/SECURITY.md](docs/SECURITY.md)
 - **Target Framework Rationale**: [docs/FRAMEWORK.md](docs/FRAMEWORK.md)
 - Reproducibility: [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
-
+- **Reproducible capsule (DOI):** https://doi.org/10.5281/zenodo.16935169
+  
 ## Usage
 - Enter URLs in the input field.
 - Select a save directory.
