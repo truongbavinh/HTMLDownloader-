@@ -9,6 +9,8 @@ Choose one from the Releases page:
 - .NET Framework 4.8
 - Microsoft Edge WebView2 Runtime (Evergreen)  
 See `docs/RUNTIME.md` for links and steps.
+> **Responsible use:** Please review [LEGAL.md](LEGAL.md) before downloading at scale.
+> Follow website ToS/robots.txt, avoid personal/sensitive data, and use polite delays.
 
 ## Download samples
 Bạn có sẵn 4 file mẫu để chạy nhanh hai luồng (Discovery & Direct):
@@ -20,9 +22,6 @@ Bạn có sẵn 4 file mẫu để chạy nhanh hai luồng (Discovery & Direct)
 **Vị trí:**
 - **MSI install:** `C:\Program Files (x86)\<Publisher>\<Product>\samples\`
 - **Portable ZIP:** `<extracted>\samples\`
-
-> Mẹo: nếu app có nút **Open Samples…**, bấm để mở nhanh thư mục này.  
-> Nếu vì lý do nào đó chưa thấy thư mục `samples\`, tải gói `...-samples-<version>.zip` (nếu có) từ trang Release và giải nén cạnh ứng dụng.
 
 ## First Run (Quick Check)
 
