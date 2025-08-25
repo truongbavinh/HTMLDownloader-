@@ -37,6 +37,7 @@ Four sample files are bundled so you can run both flows immediately:
 - Quick Start (End-User): [docs/USER_GUIDE.md](docs/USER_GUIDE.md)
 - Runtime Requirements: [docs/RUNTIME.md](docs/RUNTIME.md)
 - Security & Trust: [docs/SECURITY.md](docs/SECURITY.md)
+- **Responsible Use:** [docs/LEGAL.md](docs/LEGAL.md)
 - **Target Framework Rationale**: [docs/FRAMEWORK.md](docs/FRAMEWORK.md)
 - Reproducibility: [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 - **Reproducible capsule (DOI):** https://doi.org/10.5281/zenodo.16935169
