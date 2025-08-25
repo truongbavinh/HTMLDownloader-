@@ -34,12 +34,12 @@ Four sample files are bundled so you can run both flows immediately:
 - `samples/urls.category.rightmove.txt`  
 - `samples/urls.products.rightmove.txt`  
 ## Documentation
-- Quick Start (End-User): [docs/USER_GUIDE.md](docs/USER_GUIDE.md)
-- Runtime Requirements: [docs/RUNTIME.md](docs/RUNTIME.md)
-- Security & Trust: [docs/SECURITY.md](docs/SECURITY.md)
-- **Responsible Use:** [docs/LEGAL.md](docs/LEGAL.md)
-- **Target Framework Rationale**: [docs/FRAMEWORK.md](docs/FRAMEWORK.md)
-- Reproducibility: [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
+- Quick Start (End-User): [USER_GUIDE.md](docs/USER_GUIDE.md)
+- Runtime Requirements: [RUNTIME.md](docs/RUNTIME.md)
+- Security & Trust: [SECURITY.md](docs/SECURITY.md)
+- **Responsible Use:** [LEGAL.md](docs/LEGAL.md)
+- **Target Framework Rationale**: [FRAMEWORK.md](docs/FRAMEWORK.md)
+- Reproducibility: [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
 - **Reproducible capsule (DOI):** https://doi.org/10.5281/zenodo.16935169
   
 ## Usage
