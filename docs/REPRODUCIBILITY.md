@@ -6,7 +6,7 @@ This guide reproduces the demo using **two URL types** your app supports:
 2) **Product URLs** (direct flow): load a ready‑made list of product pages and download directly.
    - File: `samples/urls.products.farfetch.txt`
 
-> See also: `docs/RUNTIME.md` (runtimes), `docs/LEGAL.md` (robots/ToS for Farfetch).
+> See also: `docs/RUNTIME.md` (runtimes), `docs/sites/LEGAL.md` (robots/ToS for Farfetch).
 
 ---
 
