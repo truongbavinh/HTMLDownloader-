@@ -31,5 +31,61 @@
   "selector": "article.product_pod h3 a",
   "scrolls": 1,
   "delay_sec": 0.5
-}
+},
+  
+  { "domain": "ikea",
+    "page_url": "https://www.ikea.com/us/en/cat/chairs-fu002/",
+    "selector": "a[href*='/p/']",
+    "scrolls": 8, "delay_sec": 1.0
+  },
+  
+  { "domain": "walmart",
+    "page_url": "https://www.walmart.com/search?q=laptop",
+    "selector": "a[href*='/ip/']",
+    "scrolls": 10, "delay_sec": 1.2
+  },
+  { "domain": "target",
+    "page_url": "https://www.target.com/s?searchTerm=laptop",
+    "selector": "a[href*='/p/']",
+    "scrolls": 10, "delay_sec": 1.2
+  },
+  { "domain": "decathlon",
+    "page_url": "https://www.decathlon.com/collections/mens-shoes",
+    "selector": "a[href*='/products/']",
+    "scrolls": 8, "delay_sec": 1.0
+  },
+  { "domain": "eventbrite",
+    "page_url": "https://www.eventbrite.com/d/online/all-events/",
+    "selector": "a[href*='/e/']",
+    "scrolls": 8, "delay_sec": 1.0
+  },
+  { "domain": "cars",
+    "page_url": "https://www.cars.com/shopping/results/?stock_type=used",
+    "selector": "a[href*='/vehicledetail/']",
+    "scrolls": 10, "delay_sec": 1.2
+  },
+  {
+  "domain": "hm",
+  "page_url": "https://www2.hm.com/en_us/women/products/view-all.html",
+  "selector": "a[href*='/productpage.']",
+  "scrolls": 8,
+  "delay_sec": 1.0
+},
+  { "domain": "webscraperdemo",
+    "page_url": "https://webscraper.io/test-sites/e-commerce/allinone/computers/laptops",
+    "selector": "a[href*='/test-sites/e-commerce/allinone/product/']",
+    "scrolls": 2, "delay_sec": 0.5
+  },
+  { "domain": "bestbuy",
+    "page_url": "https://www.bestbuy.com/site/searchpage.jsp?st=laptop",
+    "selector": "a[href*='/site/'][href*='skuId=']",
+    "scrolls": 10, "delay_sec": 1.2
+  },
+{ "domain": "asos",
+    "page_url": "https://www.asos.com/women/dresses/cat/?cid=8799",
+    "selector": "a[href*='/prd/']",
+    "scrolls": 10, "delay_sec": 1.0
+  }
+
+
 ]
