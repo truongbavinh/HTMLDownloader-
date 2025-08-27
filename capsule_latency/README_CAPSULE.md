@@ -1,12 +1,26 @@
-# HTMLDownloader – Reproducibility Capsule
+# HTMLDownloader — Latency & Robustness Capsule
 
-This capsule contains the **raw latency logs** and the **summarization scripts** used to compute
-the statistics reported in the manuscript (median/IQR/p95 with right-censored timeouts).
+This capsule contains the raw latency logs and the summarization scripts
+used to compute the distributional metrics reported in the paper.
 
 ## Environment
-- Python 3.10+ (tested on Windows 10/11)
-- Optional (for re-running collectors): Google Chrome + chromedriver, PowerShell 5+
+- Python 3.10+
+- Optional: matplotlib (for boxplot)
 
-Install Python deps:
-```bash
-pip install -r capsule/requirements.txt
+Install:
+pip install -r capsule_latency/requirements.txt
+
+## Time budget & censoring
+Per-URL time budget T = 20 s. Timeouts are **right-censored at T**.
+We report Median (all), IQR (all), p95 (all), Success (%).
+
+## Recompute tables
+python capsule_latency/scripts/summarize_latency.py \
+  --inputs capsule_latency/logs/latency_logs_*.csv \
+  --outdir capsule_latency/outputs --plot
+
+Outputs:
+- capsule_latency/outputs/latency_summary_overall.csv
+- capsule_latency/outputs/latency_summary_by_domain.csv
+- capsule_latency/outputs/latency_overall_table.md
+- capsule_latency/outputs/latency_boxplot.png (optional)
